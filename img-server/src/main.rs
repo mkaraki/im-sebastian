@@ -123,8 +123,8 @@ async fn main() {
     };
 
     let app = Router::new()
-        .route("/thumbs/*path", get(thumb_file_handler))
-        .route("/images/*path", get(file_handler))
+        .route("/thumbs/{*path}", get(thumb_file_handler))
+        .route("/images/{*path}", get(file_handler))
         .with_state(app_state); // Pass the state to the handler
 
     // Listener config
