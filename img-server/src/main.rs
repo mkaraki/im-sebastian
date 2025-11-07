@@ -9,7 +9,7 @@ use axum::routing::get;
 use opentelemetry_sdk::trace::SdkTracerProvider;
 use path_clean::PathClean;
 use tokio::fs;
-use im_sebastian::{FileStoreType, ResizeFilterType, ResizeParam};
+use im_sebastian::{BytesSourceParam, FileStoreType, ResizeFilterType, ResizeParam, WebpExportParam};
 
 #[derive(Clone)]
 struct AppStateInfo {
@@ -46,13 +46,12 @@ async fn file_handler(
     let src_image = src_image.ok().unwrap();
 
     let src_param = im_sebastian::SourceParam{
-        src_type: FileStoreType::Bytes,
-        path: None,
-        bytes: Some(src_image),
+        src_type: FileStoreType::Bytes(BytesSourceParam {
+            bytes: src_image.clone(),
+        }),
     };
     let convert_param = im_sebastian::ConvertParam{
         export_format: im_sebastian::ImageBinaryFormat::Png,
-        webp_export_param: None,
         resize_param: None,
     };
     let processed_image_data = im_sebastian::read_and_convert(src_param, convert_param);
@@ -77,13 +76,15 @@ async fn thumb_file_handler(
     let src_image = src_image.ok().unwrap();
 
     let src_param = im_sebastian::SourceParam{
-        src_type: FileStoreType::Bytes,
-        path: None,
-        bytes: Some(src_image),
+        src_type: FileStoreType::Bytes(BytesSourceParam {
+            bytes: src_image.clone(),
+        }),
     };
     let convert_param = im_sebastian::ConvertParam{
-        export_format: im_sebastian::ImageBinaryFormat::Png,
-        webp_export_param: None,
+        export_format: im_sebastian::ImageBinaryFormat::Webp(WebpExportParam {
+            lossless: false,
+            quality: 20.0,
+        }),
         resize_param: Some(ResizeParam {
             resize_mode: im_sebastian::ResizeMode::ContainAndKeepAspectRatioIfLarger,
             resize_width: 128,

@@ -1,16 +1,22 @@
+pub struct FileSourceParam {
+    pub path: String,
+}
+
+pub struct BytesSourceParam {
+    pub bytes: Vec<u8>,
+}
+
 pub enum FileStoreType {
-    File,
-    Bytes,
+    File(FileSourceParam),
+    Bytes(BytesSourceParam),
 }
 
 pub struct SourceParam {
     pub src_type: FileStoreType,
-    pub path: Option<String>,
-    pub bytes: Option<Vec<u8>>,
 }
 
 pub enum ImageBinaryFormat {
-    Webp,
+    Webp(WebpExportParam),
     Png,
     Jpeg,
 }
@@ -29,7 +35,6 @@ pub enum ResizeMode {
 
 pub struct ConvertParam {
     pub export_format: ImageBinaryFormat,
-    pub webp_export_param: Option<WebpExportParam>,
     pub resize_param: Option<ResizeParam>,
 }
 

@@ -4,12 +4,12 @@ use crate::{FileStoreType, SourceParam};
 
 pub fn read_img(src_param: SourceParam) -> ImageResult<DynamicImage> {
     match src_param.src_type {
-        FileStoreType::File => {
-            ImageReader::open(src_param.path.unwrap().clone())?
+        FileStoreType::File(p) => {
+            ImageReader::open(p.path.clone())?
                 .decode()
         },
-        FileStoreType::Bytes => {
-            ImageReader::new(Cursor::new(src_param.bytes.unwrap()))
+        FileStoreType::Bytes(p) => {
+            ImageReader::new(Cursor::new(p.bytes))
                 .with_guessed_format()?
                 .decode()
         }

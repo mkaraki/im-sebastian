@@ -7,16 +7,15 @@ Simple image read/convert library.
 Simple image parse, and resize code:
 
 ```rust
-use im_sebastian::{FileStoreType, ResizeFilterType, ResizeParam};
+use im_sebastian::{FileStoreType, ResizeFilterType, ResizeParam, BytesSourceParam};
 fn main() {
     let src_param = im_sebastian::SourceParam {
-        src_type: FileStoreType::Bytes,
-        path: None,
-        bytes: Some(source_image_bytes),
+        src_type: FileStoreType::Bytes(BytesSourceParam {
+            bytes: src_image.clone(),
+        }),
     };
     let convert_param = im_sebastian::ConvertParam {
         export_format: im_sebastian::ImageBinaryFormat::Png,
-        webp_export_param: None,
         resize_param: Some(ResizeParam {
             resize_mode: im_sebastian::ResizeMode::ContainAndKeepAspectRatioIfLarger,
             resize_width: 500,

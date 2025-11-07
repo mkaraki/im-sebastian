@@ -43,8 +43,7 @@ pub fn read_and_convert(src_param: SourceParam, convert_param: ConvertParam) -> 
         let mut cursor = Cursor::new(&mut result.content);
 
         match convert_param.export_format {
-            ImageBinaryFormat::Webp => {
-                let webp_param = convert_param.webp_export_param.unwrap();
+            ImageBinaryFormat::Webp(webp_param) => {
                 result.content_extension = "webp".to_string();
                 result.content_type = "image/webp".to_string();
                 cfg_if! {
