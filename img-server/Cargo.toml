@@ -1,0 +1,13 @@
+[package]
+name = "img-server"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+axum = "0.7"
+tokio = { version = "1", features = ["full"] }
+path-clean = "0.1"
+im-sebastian = { path = "../", features = ["full_format"] }
+opentelemetry-stdout = { version = "0.31.0", default-features = false, features = ["trace"] }
+opentelemetry = { version = "0.31.0", default-features = false, features = ["trace"] }
+opentelemetry_sdk = { version = "0.31.0", default-features = false, features = ["trace"] }
