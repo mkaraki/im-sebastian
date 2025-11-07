@@ -547,9 +547,9 @@ checksum = "7a79a3332a6609480d7d0c9eab957bca6b455b91bb84e66d19f5ff66294b85b8"
 
 [[package]]
 name = "lepton_jpeg"
-version = "0.5.3"
+version = "0.5.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "178b5aaa3a8feccb2f29cbe39858ccf40390ce98ba31347feab3dea8efd76a13"
+checksum = "e4b280bba0e37cd1cc3de303d07ff5cef5936ab6c197bfbac4c3b75fd02b1710"
 dependencies = [
  "bytemuck",
  "byteorder",
