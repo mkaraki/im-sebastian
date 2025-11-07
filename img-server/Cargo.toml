@@ -4,9 +4,9 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-axum = "0.8"
-tokio = { version = "1", features = ["full"] }
-path-clean = "1.0"
+axum = { version = "0.8.6", default-features = false, features = ["tokio", "matched-path", "http1"] }
+tokio = { version = "1.48.0", default-features = false, features = ["fs", "macros", "rt-multi-thread"] }
+path-clean = "1.0.1"
 im-sebastian = { path = "../", features = ["full_format"] }
 opentelemetry-stdout = { version = "0.31.0", default-features = false, features = ["trace"] }
 opentelemetry = { version = "0.31.0", default-features = false, features = ["trace"] }
