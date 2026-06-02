@@ -8,6 +8,6 @@ axum = { version = "0.8.8", default-features = false, features = ["tokio", "matc
 tokio = { version = "1.50.0", default-features = false, features = ["fs", "macros", "rt-multi-thread"] }
 path-clean = "1.0.1"
 im-sebastian = { path = "../", features = ["full_format"] }
-opentelemetry-stdout = { version = "0.31.0", default-features = false, features = ["trace"] }
+opentelemetry-stdout = { version = "0.32.0", default-features = false, features = ["trace"] }
 opentelemetry = { version = "0.31.0", default-features = false, features = ["trace"] }
 opentelemetry_sdk = { version = "0.31.0", default-features = false, features = ["trace"] }
