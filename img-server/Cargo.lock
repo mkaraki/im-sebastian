@@ -664,7 +664,7 @@ dependencies = [
  "fast_image_resize",
  "image",
  "lepton_jpeg",
- "opentelemetry",
+ "opentelemetry 0.31.0",
  "webp",
 ]
 
@@ -708,7 +708,7 @@ version = "0.1.0"
 dependencies = [
  "axum",
  "im-sebastian",
- "opentelemetry",
+ "opentelemetry 0.32.0",
  "opentelemetry-stdout",
  "opentelemetry_sdk",
  "path-clean",
@@ -987,13 +987,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "opentelemetry"
+version = "0.32.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b0142c63252a9e054e68a4c61a5778f7b14f576274d593f8ce883d191a099682"
+dependencies = [
+ "futures-core",
+ "futures-sink",
+ "js-sys",
+ "pin-project-lite",
+ "thiserror",
+]
+
+[[package]]
 name = "opentelemetry-stdout"
 version = "0.31.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bc8887887e169414f637b18751487cce4e095be787d23fad13c454e2fb1b3811"
 dependencies = [
  "chrono",
- "opentelemetry",
+ "opentelemetry 0.31.0",
  "opentelemetry_sdk",
 ]
 
@@ -1006,7 +1019,7 @@ dependencies = [
  "futures-channel",
  "futures-executor",
  "futures-util",
- "opentelemetry",
+ "opentelemetry 0.31.0",
  "percent-encoding",
  "rand",
  "thiserror",
